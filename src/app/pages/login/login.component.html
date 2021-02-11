@@ -1,0 +1,30 @@
+<h2>Login</h2>
+<form  #loginform="ngForm" autocomplete="off" novalidate>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="UserName" class="form-control" name="UserName" placeholder="Username" autocomplete="username" required [(ngModel)]="authenticationData.UserName" #UserName="ngModel" />
+
+        <div *ngIf="UserName.invalid && (UserName.dirty || isSubmit)" class="invalid-feedback">
+
+              Please enter Username
+
+            </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" autocomplete="current-password" required #Password="ngModel" [(ngModel)]="authenticationData.Password"/>
+
+        <div *ngIf="Password.invalid && (Password.dirty || isSubmit)" class="invalid-feedback">
+
+              Please enter Password
+
+      </div>
+    </div>
+    <div class="form-group">
+        <button (click)="onLoggedin(loginform)" class="btn btn-primary">
+
+            Login
+        </button>
+
+    </div>
+</form>

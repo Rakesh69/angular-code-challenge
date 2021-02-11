@@ -1,0 +1,56 @@
+<div class="col-12">
+  <div class="card">
+      <div class="card-header">
+          <i class="fa fa-file-text font-xl pt-2"></i> Dashboard
+          <div class="col-md-4 offset-md-6 pull-right">
+              <div class="input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-search"></i></span>
+                  </div>
+                  <input type="text" class="form-control" [(ngModel)]="filterQuery" placeholder="Search" />
+              </div>
+          </div>
+      </div>
+      <div class="card-body">
+          <table class="table table-striped table-hover table-responsive-lg" [mfData]="tradingList | dashboardFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="10">
+              <thead>
+                  <tr>
+                      <th>
+                          #
+                      </th>
+                      <th>
+                          <mfDefaultSorter by="longName">Name</mfDefaultSorter>
+                      </th>
+                      <th>
+                          <mfDefaultSorter by="quoteSourceName">Quote</mfDefaultSorter>
+                      </th>
+                      <th>
+                          <mfDefaultSorter by="regularMarketPrice">Price</mfDefaultSorter>
+                      </th>
+                      <th>
+                          <mfDefaultSorter by="symbol">Symbol</mfDefaultSorter>
+                      </th>
+                  </tr>
+              </thead>
+              <tbody>
+
+                  <tr *ngFor="let item of mf.data; let i = index">
+                      <td>{{i+1}}</td>
+                      <td>{{item.longName}}</td>
+                      <td>{{item.quoteSourceName}}</td>
+                      <td>{{item.regularMarketPrice}}</td>
+                      <td>{{item.symbol}}</td>
+                  </tr>
+              </tbody>
+              <tfoot>
+                  <tr>
+                      <td colspan="5">
+                          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                      </td>
+                  </tr>
+              </tfoot>
+          </table>
+
+      </div>
+  </div>
+</div>

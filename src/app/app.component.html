@@ -1,0 +1,18 @@
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" >
+  <div class="navbar-nav" >
+      <a class="nav-item nav-link" routerLink="/home">Home</a>
+      <a class="nav-item nav-link" routerLink="/dashboard">Dashboard</a>
+      <a class="nav-item nav-link pull-right" (click)="Logout()">Logout</a>
+  </div>
+</nav>
+
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+              <router-outlet></router-outlet>
+              <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" loadingText="Please wait" type="ball-spin-fade">
+                <p style="font-size: 20px; color: white">Loading...</p>
+            </ngx-spinner>
+  </div>
+</div>
